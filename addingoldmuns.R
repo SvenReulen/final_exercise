@@ -1,7 +1,19 @@
+reforms <- subset(gem_her, Jaar >= 1995)
 old_muns <- reforms[2:7] 
+old_muns
 reformations_data <- merge(old_muns$Oude.gemeenten, ww_gem_2012$woningwaarde)
-
-
+??join
+test <- data.frame(Date=as.Date(character()),                  
+                   File=character(),                   
+                   User=character(),                   
+                   stringsAsFactors=FALSE)
+for(mun in old_muns$Oude.gemeenten){
+  test <- rbind(test, mun)
+}
+test1 <- data.frame(ww_gem_2012[match(ww_gem_2012[1], test, nomatch = 0)
+test
+?match
+??select
 ADD DATA TO ALL COLUMNS 
 SUM DATA 
 ADD TO MUNICIPAL
