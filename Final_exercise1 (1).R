@@ -31,19 +31,27 @@ gem_her = read.csv('Gemeentelijke_herindelingen.csv', fill=TRUE, sep = ",", head
 dl_from_dropbox("woningwaardegemeenten.csv", "97saz2k2xkx3m73")
 ww_gem_2012 = read.csv('woningwaardegemeenten.csv', fill=TRUE, sep = ";", header = T)
 
+dl_from_dropbox("inwoners_1995.csv", "70zyf2ndkulx8l7")
+inwoners1995 <- read.csv('inwoners_1995.csv', fill=TRUE, header = T)
+
 # 4. Create functions converting data following municipality reformations year by year
 ### Splitting municipalities in two datasets, reformed and not reformed
 source('splittingdata.r')
-devideddata <- splittingdata(mun_neth$GM_NAAM, gem_her$Nieuwe.gemeente, 2012)
+devideddata <- splittingdata(mun_neth$GM_NAAM, '2010')
 no_reformations <- devideddata[1]
 with_reformations <- devideddata[2]
-### FUNCTION FOR ONE DATASET ADDING DATA FROM A DATASET TO THE MUN MAP FOR ALL THE MUNICIPALITIES IN no_reformations
+### ADDING DATA FROM A DATASET TO THE MUN MAP FOR ALL THE MUNICIPALITIES IN no_reformations
 no_reformations_data <- merge(no_reformations, ww_gem_2012)
 
 ### FUNCTION FOR THE SAME DATASET ADDING DATA FROM A DATASET TO THE MUN MAP FOR ALL THE MUNICIPALTIES IN DFWR
 #   ADDING THE OLD MUNICIPALITIES TOGETHER
-for(mun in gem_her$Oude.gemeenten)
-  
+old_muns <- reforms[2:7] 
+reformations_data <- merge(old_muns$Oude.gemeenten, ww_gem_2012$woningwaarde)
+
+
+ADD DATA TO ALL COLUMNS 
+SUM DATA 
+ADD TO MUNICIPAL
 with_reformations_data <- merge(with_reformations, gem_her)
 subset(with_reformations_data, select=c("Oude.gemeenten", 'X', 'X.1', 'X.2', 'X.3', 'X.4'))
 a <- head(with_reformations_data)[1:5]

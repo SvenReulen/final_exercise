@@ -1,5 +1,4 @@
-splittingdata <- function(SPDF_with_names, scale_map_with_ID, year_dataset){ 
-  #& year < 2012 & year > 1995)
+splittingdata <- function(SPDF_with_names, year_dataset){ 
   dfnr <- data.frame(Date=as.Date(character()),                  
                      File=character(),                      
                      User=character(),                     
@@ -9,8 +8,9 @@ splittingdata <- function(SPDF_with_names, scale_map_with_ID, year_dataset){
                      User=character(),                   
                      stringsAsFactors=FALSE)
   options(stringsAsFactors=FALSE)
+  reforms <- subset(gem_her, Jaar >= year_dataset)
   for(mun in SPDF_with_names){
-    if(mun %in% scale_map_with_ID){    #& y >= gem_her$Jaar                     
+    if(mun %in% reforms$Nieuwe.gemeente){
       dfwr <- rbind(dfwr, mun) 
     }
     else{
