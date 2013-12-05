@@ -62,13 +62,5 @@ FUNCTION TO CALCULATE REFORMED MUNICIPALITIES
 mun_neth@data = data.frame(mun_neth@data, ww_gem_2012[match(mun_neth@data[,2], ww_gem_2012[,1]),])
 
 #   8. Create a nice plotting function with a standardized lay out 
-mun_neth.fort <- fortify(mun_neth, region = "woningwaarde")
-mun_neth.fort$id <- as.numeric(mun_neth.fort$id)
-mun_neth.fort$id <- mun_neth.fort$id
-
-ggplot(data = mun_neth.fort, aes(x = long, y = lat, fill = id, group = group)) +
-  geom_polygon(colour = "black") +
-  scale_fill_gradient(high = "red", low = "white", guide = "colorbar") +
-  coord_equal() +
-  theme() +
-  ggtitle("Gemiddelde woningwaarde in duizendtallen")
+source('plottingmap.r')
+plottingmap("woningwaarde", 'gemiddelde woningwaarde in duizendtallen')
