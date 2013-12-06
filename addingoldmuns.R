@@ -1,27 +1,13 @@
 reforms <- subset(gem_her, Jaar >= 1995)
 old_muns <- reforms[2:7] 
-old_muns
-reformations_data <- merge(old_muns$Oude.gemeenten, ww_gem_2012$woningwaarde)
-??join
-test <- data.frame(Date=as.Date(character()),                  
-                   File=character(),                   
-                   User=character(),                   
-                   stringsAsFactors=FALSE)
-for(mun in old_muns$Oude.gemeenten){
-  test <- rbind(test, mun)
-}
-test1 <- data.frame(ww_gem_2012[match(ww_gem_2012[1], test, nomatch = 0)
-test
-?match
-??select
+old_muns <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="Oude.gemeenten", by.y="Onderwerpen")
+old_muns1 <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="X", by.y="Onderwerpen")
+old_muns2 <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="X.1", by.y="Onderwerpen")
+old_muns3 <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="X.2", by.y="Onderwerpen")
+old_muns4 <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="X.3", by.y="Onderwerpen")
+old_muns5 <- merge(old_muns, melt(inwoners1995, id.var="Onderwerpen"), by.x="X.4", by.y="Onderwerpen")
+old_muns5
+with_reformations <- data.frame(devideddata[2])
 ADD DATA TO ALL COLUMNS 
 SUM DATA 
 ADD TO MUNICIPAL
-
-with_reformations_data <- merge(with_reformations, gem_her)
-
-subset(with_reformations_data, select=c("Oude.gemeenten", 'X', 'X.1', 'X.2', 'X.3', 'X.4'))
-a <- head(with_reformations_data)[1:5]
-a[1]
-?subset
-mun_neth@data = data.frame(mun_neth@data, dfnr[match(mun_neth@data[,2], dfnr[,1]),])
