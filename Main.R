@@ -6,8 +6,7 @@
 #              A line starting with #-# means not functional and not finished.
 
 ### Set working directory to source file locations (can be done in options above (session -> set working directory))
-setwd("M:/Applied_geoscripting/Final_exercise/final_exercise")
-datdir <- "M:/Applied_geoscripting/Final_exercise/final_exercise"
+setwd("~/Wageningen/2.2 Geoscripting/GITHUB/final_exercise")
 source('packages.r')
 
 # 1. Load map and data 2012
