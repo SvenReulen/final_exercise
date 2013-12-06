@@ -1,12 +1,12 @@
 # Author: Sven Reulen
 # Date: 06-12-2013
-# Dependencies
+# Dependencies: Set working directory
 # Description: Final exercise for the course geoscripting
 # Specialties: A line starting with #+# means functional but unnecessary for the result
 #              A line starting with #-# means not functional and not finished.
 
 ### Set working directory to source file locations (can be done in options above (session -> set working directory))
-setwd("~/Wageningen/2.2 Geoscripting/GITHUB/final_exercise")
+#setwd("~/Wageningen/2.2 Geoscripting/GITHUB/final_exercise")
 source('packages.r')
 
 # 1. Load map and data 2012
